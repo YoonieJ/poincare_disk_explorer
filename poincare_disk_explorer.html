@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Poincaré Disk Model Explorer</title>
+  <link rel="stylesheet" href="poincare_disk_explorer.css">
+  <script src="poincare_disk_explorer.js" defer></script>
+</head>
+<body>
+  <h2 class="sr-only">Poincaré disk model explorer — an interactive hyperbolic geometry visualizer where you can place points, draw geodesics, and build triangles</h2>
+
+  <div id="app">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Hyperbolic geometry</p>
+        <h1>Poincaré Disk Explorer</h1>
+      </div>
+      <p class="header-note">Place points, draw geodesics, and compare triangle angle sums inside the unit disk.</p>
+    </header>
+
+    <main class="workspace">
+      <aside id="sidebar" aria-label="Explorer controls">
+        <section class="control-section" aria-labelledby="tool-heading">
+          <div class="section-label" id="tool-heading">Tool</div>
+          <div class="tool-group">
+            <button class="tool-btn active" id="btn-point" type="button" aria-pressed="true">
+              <span class="tool-icon point-icon" aria-hidden="true"></span>
+              <span>
+                <span class="tool-title">Place point</span>
+                <span class="tool-meta">Click anywhere inside the disk</span>
+              </span>
+            </button>
+            <button class="tool-btn" id="btn-line" type="button" aria-pressed="false">
+              <span class="tool-icon line-icon" aria-hidden="true"></span>
+              <span>
+                <span class="tool-title">Draw geodesic</span>
+                <span class="tool-meta">Choose two points</span>
+              </span>
+            </button>
+            <button class="tool-btn" id="btn-triangle" type="button" aria-pressed="false">
+              <span class="tool-icon triangle-icon" aria-hidden="true"></span>
+              <span>
+                <span class="tool-title">Triangle</span>
+                <span class="tool-meta">Choose three points</span>
+              </span>
+            </button>
+          </div>
+        </section>
+
+        <section class="control-section" aria-labelledby="stats-heading">
+          <div class="section-label" id="stats-heading">Scene</div>
+          <div class="scene-counts" aria-live="polite">
+            <div>
+              <span class="count-val" id="point-count">0</span>
+              <span class="count-label">Points</span>
+            </div>
+            <div>
+              <span class="count-val" id="line-count">0</span>
+              <span class="count-label">Lines</span>
+            </div>
+            <div>
+              <span class="count-val" id="triangle-count">0</span>
+              <span class="count-label">Triangles</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="control-section" aria-labelledby="angle-heading">
+          <div class="section-label" id="angle-heading">Info</div>
+          <div id="angle-card" class="stat-card angle-card" hidden>
+            <div class="label">Triangle angles</div>
+            <div class="val" id="angle-sum">—</div>
+            <div class="sub" id="angle-detail">—</div>
+            <div class="sub angle-deficit" id="angle-deficit">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Geometry</div>
+            <p class="geometry-note">
+              "Lines" are arcs orthogonal to the boundary circle. Distances stretch near the edge, so the disk is infinite.
+            </p>
+          </div>
+        </section>
+
+        <div class="sidebar-actions">
+          <button id="clear-btn" type="button">Clear all</button>
+        </div>
+      </aside>
+
+      <section class="canvas-panel" aria-label="Interactive Poincaré disk">
+        <div id="canvas-wrap">
+          <canvas id="c" width="480" height="480"></canvas>
+        </div>
+        <div class="status-bar" aria-live="polite">
+          <span id="status-text">Point mode: click inside the disk to place a point.</span>
+          <span class="shortcut-hint">1 Point · 2 Line · 3 Triangle · Esc Cancel</span>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
