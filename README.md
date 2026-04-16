@@ -43,4 +43,3 @@ http://localhost:8000/poincare_disk_explorer.html
 - `poincare_disk_explorer.html`: page structure
 - `poincare_disk_explorer.css`: visual styling
 - `poincare_disk_explorer.js`: geometry logic and interactions
-# poincare_disk_explorer
